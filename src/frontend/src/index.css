@@ -1,0 +1,196 @@
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Figtree";
+  src: url("/assets/fonts/Figtree-Variable.woff2") format("woff2");
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark lab theme - deep charcoal */
+    --background: 0.16 0.005 250;
+    --foreground: 0.93 0.008 250;
+
+    --card: 0.19 0.008 250;
+    --card-foreground: 0.93 0.008 250;
+
+    --popover: 0.19 0.008 250;
+    --popover-foreground: 0.93 0.008 250;
+
+    /* Mint/emerald primary */
+    --primary: 0.72 0.17 162;
+    --primary-foreground: 0.12 0.01 250;
+
+    --secondary: 0.24 0.01 250;
+    --secondary-foreground: 0.85 0.01 250;
+
+    --muted: 0.24 0.01 250;
+    --muted-foreground: 0.58 0.01 250;
+
+    --accent: 0.26 0.015 250;
+    --accent-foreground: 0.92 0.008 250;
+
+    --destructive: 0.63 0.22 29;
+    --destructive-foreground: 0.97 0.005 250;
+
+    --border: 0.28 0.015 250;
+    --input: 0.28 0.015 250;
+    --ring: 0.72 0.17 162;
+
+    --radius: 0.75rem;
+
+    /* Verdict colors - raw for use in component styles */
+    --verdict-excellent: 0.74 0.18 162;
+    --verdict-good: 0.67 0.2 145;
+    --verdict-fair: 0.75 0.18 55;
+    --verdict-poor: 0.62 0.22 29;
+
+    --chart-1: 0.72 0.17 162;
+    --chart-2: 0.75 0.18 55;
+    --chart-3: 0.62 0.22 29;
+    --chart-4: 0.68 0.15 200;
+    --chart-5: 0.8 0.14 300;
+
+    --sidebar: 0.17 0.007 250;
+    --sidebar-foreground: 0.93 0.008 250;
+    --sidebar-primary: 0.72 0.17 162;
+    --sidebar-primary-foreground: 0.12 0.01 250;
+    --sidebar-accent: 0.24 0.01 250;
+    --sidebar-accent-foreground: 0.85 0.01 250;
+    --sidebar-border: 0.28 0.015 250;
+    --sidebar-ring: 0.72 0.17 162;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    background-image: radial-gradient(
+        ellipse 80% 50% at 50% -10%,
+        oklch(0.28 0.08 162 / 0.3),
+        transparent
+      ),
+      radial-gradient(
+        ellipse 60% 40% at 80% 100%,
+        oklch(0.25 0.06 200 / 0.2),
+        transparent
+      );
+    background-attachment: fixed;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .verdict-excellent {
+    color: oklch(var(--verdict-excellent));
+  }
+  .verdict-good {
+    color: oklch(var(--verdict-good));
+  }
+  .verdict-fair {
+    color: oklch(var(--verdict-fair));
+  }
+  .verdict-poor {
+    color: oklch(var(--verdict-poor));
+  }
+
+  .bg-verdict-excellent {
+    background-color: oklch(var(--verdict-excellent) / 0.15);
+    border-color: oklch(var(--verdict-excellent) / 0.4);
+    color: oklch(var(--verdict-excellent));
+  }
+  .bg-verdict-good {
+    background-color: oklch(var(--verdict-good) / 0.15);
+    border-color: oklch(var(--verdict-good) / 0.4);
+    color: oklch(var(--verdict-good));
+  }
+  .bg-verdict-fair {
+    background-color: oklch(var(--verdict-fair) / 0.15);
+    border-color: oklch(var(--verdict-fair) / 0.4);
+    color: oklch(var(--verdict-fair));
+  }
+  .bg-verdict-poor {
+    background-color: oklch(var(--verdict-poor) / 0.15);
+    border-color: oklch(var(--verdict-poor) / 0.4);
+    color: oklch(var(--verdict-poor));
+  }
+
+  .hex-grid {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100' viewBox='0 0 56 100'%3E%3Cpath d='M28 66L0 50V18L28 2l28 16v32L28 66zm0-2.31L54 49.06V19.94L28 4.31 2 19.94v29.12L28 63.69z' fill='%2310b981' fill-opacity='0.04'/%3E%3C/svg%3E");
+  }
+
+  .glow-primary {
+    box-shadow: 0 0 30px oklch(0.72 0.17 162 / 0.2), 0 0 60px
+      oklch(0.72 0.17 162 / 0.08);
+  }
+
+  .glow-text {
+    text-shadow: 0 0 20px oklch(0.72 0.17 162 / 0.5);
+  }
+
+  .glass-card {
+    background: oklch(0.19 0.008 250 / 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid oklch(0.3 0.015 250);
+  }
+}
+
+/* Smooth arc animation */
+@keyframes arc-fill {
+  from {
+    stroke-dashoffset: var(--arc-total);
+  }
+  to {
+    stroke-dashoffset: var(--arc-offset);
+  }
+}
+
+.arc-animate {
+  animation: arc-fill 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Pulse glow for scanning state */
+@keyframes scan-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+.scan-pulse {
+  animation: scan-pulse 1.5s ease-in-out infinite;
+}
