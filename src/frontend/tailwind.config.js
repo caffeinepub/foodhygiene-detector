@@ -16,9 +16,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Bricolage Grotesque', 'sans-serif'],
-        body: ['Figtree', 'sans-serif'],
-        mono: ['Geist Mono', 'monospace'],
+        display: ['DM Serif Display', 'Georgia', 'serif'],
+        body: ['Plus Jakarta Sans', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
       },
       colors: {
         border: "oklch(var(--border))",
@@ -78,9 +78,9 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       boxShadow: {
-        xs: "0 1px 2px 0 rgba(0,0,0,0.05)",
-        "glow-sm": "0 0 15px oklch(0.72 0.17 162 / 0.25)",
-        "glow-md": "0 0 30px oklch(0.72 0.17 162 / 0.2), 0 0 60px oklch(0.72 0.17 162 / 0.1)",
+        "glow-sm": "0 0 14px oklch(0.76 0.16 60 / 0.22)",
+        "glow-md": "0 0 28px oklch(0.76 0.16 60 / 0.18), 0 0 56px oklch(0.76 0.16 60 / 0.08)",
+        "glow-red": "0 0 20px oklch(0.6 0.22 18 / 0.25)",
       },
       keyframes: {
         "accordion-down": {

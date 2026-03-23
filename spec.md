@@ -1,35 +1,28 @@
-# FoodHygiene Detector
+# Illness Detector
 
 ## Current State
-New project. No existing code.
+New project. No existing implementation.
 
 ## Requested Changes (Diff)
 
 ### Add
-- Image upload interface for any food item (fruits, vegetables, drinks, dishes, packaged food)
-- Hygiene analysis using an external AI vision API via HTTP outcalls
-- Hygiene score display (0-100) with color-coded rating (Poor / Fair / Good / Excellent)
-- Detailed breakdown: contamination risk, freshness level, cleanliness indicators, safety warnings
-- History of past scans stored per session
-- Category tagging (fruit, vegetable, drink, cooked dish, packaged food, other)
+- An app that allows users to upload a photo of a person and/or describe their symptoms to detect potential illness indicators
+- Google Gemini API integration (user provides their own API key) for AI-powered illness analysis
+- Analysis output: overall health concern level, possible conditions, visible symptoms detected, and recommendations (see a doctor, rest, etc.)
+- API key setup banner/modal on first load
+- Result display with severity indicator (low / moderate / high concern)
 
 ### Modify
-N/A
+- N/A
 
 ### Remove
-N/A
+- N/A
 
 ## Implementation Plan
-1. Backend (Motoko):
-   - Store scan history: image reference, category, hygiene score, analysis result, timestamp
-   - HTTP outcall to Google Gemini Vision API to analyze uploaded image for hygiene indicators
-   - CRUD for scan records: create, list, delete
-   - Summarize overall hygiene verdict from AI response
-
+1. Backend: minimal canister (no backend storage needed; all analysis is done via frontend HTTP calls to Gemini)
 2. Frontend:
-   - Landing/home page with upload zone and category selector
-   - Image preview before submission
-   - Loading state during analysis
-   - Results card: hygiene score meter, color badge, AI findings breakdown
-   - Scan history list with thumbnails and scores
-   - Responsive layout
+   - API key input and local storage
+   - Image upload + optional symptom text input
+   - Call Gemini Vision API with the image and/or symptom description
+   - Display structured results: concern level badge, possible conditions list, visible observations, recommendations
+   - Disclaimer that this is not medical advice
